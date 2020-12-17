@@ -1,2 +1,4 @@
 # CS10
 Introductory computer science at Harry Ainlay
+
+ALL SOURCES CONTAINED WITHIN THIS REPOSITORY IS FOR REFERENCE ONLY
