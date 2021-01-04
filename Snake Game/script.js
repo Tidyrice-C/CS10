@@ -2,79 +2,6 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
-//function for rectangle
-function rectangle(x1, y1, w, h) {
-  const colors = [
-    "fuschsia",
-    "greenyellow",
-    "mediumslateblue",
-    "lavender,",
-    "magenta",
-    "mediumspringgreen",
-    "mediumvioletred",
-    "gold",
-    "ghostwhite",
-    "floralwhite",
-    "darksalmon",
-    "cornsilk",
-    "chocolate",
-    "cornflowerblue",
-    "cyan",
-    "crimson",
-    "burlywood",
-    "darkorchid",
-    "darkseagreen"
-  ];
-
-  var color = colors[Math.floor(Math.random() * colors.length)];
-  for (let num = 0; num < 20; num++) {
-    context.beginPath();
-    context.strokeStyle = color;
-    context.lineWidth = 1;
-    context.moveTo(x1, y1);
-    context.lineTo(x1, y1 + h);
-    context.lineTo(x1 + w, y1 + h);
-    context.lineTo(x1 + w, y1);
-    context.closePath();
-    context.stroke();
-  }
-}
-
-//circle function
-function circle(x1, y1, r) {
-  const colors = [
-    "fuschsia",
-    "greenyellow",
-    "mediumslateblue",
-    "lavender,",
-    "magenta",
-    "mediumspringgreen",
-    "mediumvioletred",
-    "gold",
-    "ghostwhite",
-    "floralwhite",
-    "darksalmon",
-    "cornsilk",
-    "chocolate",
-    "cornflowerblue",
-    "cyan",
-    "crimson",
-    "burlywood",
-    "darkorchid",
-    "darkseagreen"
-  ];
-
-  var color = colors[Math.floor(Math.random() * colors.length)];
-  for (let num = 0; num < 20; num++) {
-    context.beginPath();
-    context.strokeStyle = color;
-
-    context.lineWidth = 1;
-    context.arc(x1, y1, r, 0, 2 * Math.PI);
-    context.stroke();
-  }
-}
-
 //snake
 let snake = [
   { x: 220, y: 200 },
@@ -86,7 +13,7 @@ let snake = [
 
 //draw one pixel of snake (DO NOT CALL THIS FUNCTION)
 function drawsnakepixel(arrayelement) {
-  rectangle(arrayelement.x, arrayelement.y, 10, 10);
+  rectangle(arrayelement.x, arrayelement.y, 10, 10, context);
 }
 
 //prints snake pixels (CALL THIS FUNCTION)
@@ -112,6 +39,7 @@ function move() {
   if (x === 410 || x === -10 || y === -10 || y === 410) {
     alert(wallcollide + score);
     clearInterval(loop);
+    location.reload();
     //document.location.reload();
   }
 
@@ -163,7 +91,7 @@ function generatepellet() {
 
   //draw pellet
   function drawpellet() {
-    circle(x + 5, y + 5, 5);
+    circle(x + 5, y + 5, 5, context);
   }
 
   //main function body
